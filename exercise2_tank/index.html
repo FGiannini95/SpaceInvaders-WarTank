@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>War Tank</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript" src="js/utils/utils.js"></script>
+    <script type="text/javascript" src="js/classes/Tanque.js"></script>
+    <script type="text/javascript" src="js/classes/Bala.js"></script>
+    <script type="text/javascript" src="js/classes/Enemigo.js"></script>
+    <!-- <script
+      type="text/javascript"
+      src="js/classes/Tanque.js"
+    ></script> -->
+    <script>
+      game = {
+        canvas: null,
+        ctx: null,
+        caratula: true,
+        x: 0,
+        y: 0,
+        imagen: null,
+        radianes: null,
+        teclaPulsada: null,
+        tecla_array: new Array(),
+        balas_array: new Array(),
+        enemigos_array: new Array(),
+        colorEnemigo: [
+          "red",
+          "blue",
+          "black",
+          "orange",
+          "yellow",
+          "brown",
+          "purple",
+        ],
+        colorBala: "red",
+        centroX: 0,
+        centroY: 0,
+        w: 0,
+        h: 0,
+        puntos: 0,
+        vidas: 3,
+        balas: 200,
+        finJuego: false,
+      };
+
+      sonidos = {
+        boing: null,
+        disparo: null,
+        intro: null,
+        fin: null,
+        boom: null,
+      };
+
+      const BARRA = 32;
+
+      //moviemnto de rotación
+      document.addEventListener("mousemove", function(e){
+        var{x,y} = ajustar (e.clientX, e.clientY);
+        var dx = x - game.centroX;
+        var dy = y - game.centroY;
+        game.radianes = Math.atan2(dy, dx);
+      })
+
+      document.addEventListener("keydown", function(e){
+        game.teclaPulsada = e.keyCode;
+        game.tecla_array[game.teclaPulsada] = true;
+      })
+
+      window.requestAnimationFrame = (function () {
+        return (
+          window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          function (callback) {
+            window.setTimeout(callback, 17);
+          }
+        );
+      })();
+
+      window.onload = function () {
+        game.canvas = document.getElementById("canvas");
+        if (game.canvas && game.canvas.getContext) {
+          game.ctx = canvas.getContext("2d");
+          if (game.ctx) {
+            sonidos.boing = document.getElementById("boing");
+            sonidos.disparo = document.getElementById("disparo");
+            sonidos.intro = document.getElementById("intro");
+            sonidos.fin = document.getElementById("fin");
+            sonidos.boom = document.getElementById("boom");
+            //
+            game.w = game.canvas.width;
+            game.h = game.canvas.height;
+            game.centroX = game.w / 2;
+            game.centroY = game.h / 2;
+            game.imagen = new Image();
+            game.tanque = new Tanque(game.centroX, game.centroY);
+
+            caratula();
+            game.canvas.addEventListener("click", seleccionar, false);
+          } else {
+            alert("NO cuentas con CANVAS");
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>War Tank</h1>
+    <canvas id="canvas" width="700" height="500">
+      Tu navegador no soprta el canvas de HTML5.
+    </canvas>
+    <audio id="boing">
+      <source src="sonidos/boing.mp3" />
+      <source src="sonidos/boing.ogg" />
+    </audio>
+    <audio id="disparo">
+      <source src="sonidos/disparo.mp3" />
+      <source src="sonidos/disparo.ogg" />
+    </audio>
+    <audio id="intro">
+      <source src="sonidos/intro.mp3" />
+      <source src="sonidos/intro.ogg" />
+    </audio>
+    <audio id="fin">
+      <source src="sonidos/gameOver.mp3" />
+      <source src="sonidos/gameOver.ogg" />
+    </audio>
+    <audio id="boom">
+      <source src="sonidos/boom.mp3" />
+      <source src="sonidos/boom.ogg" />
+    </audio>
+  </body>
+</html>

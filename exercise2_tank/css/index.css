@@ -1,0 +1,10 @@
+body{
+	width:  700px;
+	margin: 0 auto;
+	text-align: center;
+}
+canvas{
+	background:#ccc;
+	border: solid black 3px;
+	border-radius: 1rem;
+}
