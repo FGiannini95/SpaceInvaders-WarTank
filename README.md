@@ -10,4 +10,4 @@ https://github.com/FGiannini95/SpaceInvaders-WarTank.git
 3. Run the project:
    - open the html file in the browser
 ## Videos
-- You can see my explication of the project in the following link: 
+- You can see my explication of the project in the following link: https://www.youtube.com/watch?v=Q5VFQGc_Qhc
