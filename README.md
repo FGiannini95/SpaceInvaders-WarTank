@@ -7,7 +7,7 @@ Dive into the fun of this little game made using objects, classes, and JavaScrip
 https://github.com/FGiannini95/SpaceInvaders-WarTank.git
 2. Move to the application folder:
    - cd SpaceInvaders-WarTank
-3. Install the dependencies:
+3. Run the project:
    - open the html file in the browser
 ## Videos
 - You can see my explication of the project in the following link: 
